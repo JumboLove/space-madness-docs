@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import shiki, { getHighlighter } from "shiki";
 import { TerminalIcon } from "lucide-react";
 import groqGrammar from "src/shiki/groq.json";
+import ClipboardCopyBtn from "@/components/util/ClipboardCopyBtn.astro";
 
 export interface Props {
   code: string;
@@ -57,7 +58,8 @@ const htmlString = shiki.renderToHtml(tokens, {
 });
 ---
 
-<div class={cn(className, "not-prose")}>
+<div class={cn(className, "not-prose")} data-code-block>
+  <ClipboardCopyBtn />
   {
     filename && (
       <header class="flex items-center mb-2 text-muted">
