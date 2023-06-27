@@ -1,14 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getConcept } from "@/queries/concept";
+import CodeBlock from "@/components/content/CodeBlock.astro";
 import {
   Popover,
-  PopoverTrigger,
   PopoverContent,
+  PopoverTrigger,
 } from "@/components/content/Popover";
 import { getUrlForSanityType } from "@/lib/url";
-import { Search } from "lucide-react";
-import CodeBlock from "@/components/content/CodeBlock.astro";
+import { getConcept } from "@/queries/concept";
+import { Search, Flame, Link, Component, type LucideIcon } from "lucide-react";
+import Layout from "../layouts/Layout.astro";
 
 const digitalGardenConcept = await getConcept("digital-garden");
 const digitalGardenUrl = new URL(
@@ -16,27 +16,32 @@ const digitalGardenUrl = new URL(
   Astro.url
 ).toString();
 
-const featuresList: { title: string; description: string }[] = [
-  {
-    title: "Fast by default",
-    description:
-      "Sites are compiled at build time. Always fast. Scales infinitely <br/>CDN & Edge hostable",
-  },
-  {
-    title: "Link everything",
-    description:
-      "Links connect different content pieces together, allowing for organic exploration. All links are bi-directional. <br/>Backlinks are automagic  🪄",
-  },
-  {
-    title: "Search anything",
-    description: "Fast and local search is built in. No tweaking necessary.",
-  },
-  {
-    title: "Fully customizable",
-    description:
-      "You own the entire stack <br/>A powerful and easy to use backend Sanity Studio <br/>A feature rich, DX paradise frontend with Astro",
-  },
-];
+const featuresList: { title: string; description: string; icon: LucideIcon }[] =
+  [
+    {
+      title: "Fast by default",
+      description:
+        "Sites are compiled at build time. Always fast. Scales infinitely <br/>CDN & Edge hostable",
+      icon: Flame,
+    },
+    {
+      title: "Link everything",
+      description:
+        "Links connect different content pieces together, allowing for organic exploration. All links are bi-directional. <br/>Backlinks are automagic  🪄",
+      icon: Link,
+    },
+    {
+      title: "Search anything",
+      description: "Fast and local search is built in. No tweaking necessary.",
+      icon: Search,
+    },
+    {
+      title: "Fully customizable",
+      description:
+        "You own the entire stack <br/>A powerful and easy to use backend Sanity Studio <br/>A feature rich, DX paradise frontend with Astro",
+      icon: Component,
+    },
+  ];
 
 const techFeatures: { title: string; description: string }[] = [
   {
@@ -91,7 +96,8 @@ const techFeatures: { title: string; description: string }[] = [
             <div class="flex flex-col justify-between gap-2 leading-snug">
               <p class="text-md">{digitalGardenConcept.description}</p><a
                 href={digitalGardenUrl}
-                class="pt-popover-content-link inline-block">Digital Garden</a>
+                class="pt-popover-content-link inline-block">Digital Garden</a
+              >
             </div>
           </PopoverContent>
         </Popover>
@@ -150,21 +156,8 @@ const techFeatures: { title: string; description: string }[] = [
                 return (
                   <div class="relative pl-16">
                     <dt class="text-base font-semibold leading-7 text-gray-200">
-                      <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-fandango">
-                        <svg
-                          class="h-6 w-6 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-                          />
-                        </svg>
+                      <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-moonstone/90">
+                        <feature.icon />
                       </div>
                       <span class="tracking-wide">{feature.title}</span>
                     </dt>
@@ -257,7 +250,7 @@ const techFeatures: { title: string; description: string }[] = [
 
             <a
               href="https://github.com/JumboLove/space-madness"
-              class="border-focusable flex flex-1 items-center justify-center px-2 py-4"
+              class="border-focusable flex flex-1 items-center justify-center px-2 py-4 no-underline"
               ><span>View Github</span></a
             >
           </div>

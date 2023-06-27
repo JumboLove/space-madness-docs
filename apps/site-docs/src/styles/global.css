@@ -203,8 +203,8 @@
 
 /* Base Links */
 @layer base {
-  a[href^="http://"],
-  a[href^="https://"],
+  a[href^="http://"]:not(.no-underline),
+  a[href^="https://"]:not(.no-underline),
   .link {
     @apply underline decoration-2 underline-offset-2;
     text-decoration-color: var(--fandango);
@@ -212,10 +212,10 @@
     transition: text-underline-offset 0.1s ease-in;
   }
 
-  a[href^="http://"]:hover,
-  a[href^="http://"]:focus,
-  a[href^="https://"]:hover,
-  a[href^="https://"]:focus,
+  a[href^="http://"]:not(.no-underline):hover,
+  a[href^="http://"]:not(.no-underline):focus,
+  a[href^="https://"]:not(.no-underline):hover,
+  a[href^="https://"]:not(.no-underline):focus,
   .link:hover,
   .link:focus {
     @apply underline-offset-4;
