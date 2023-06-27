@@ -39,6 +39,12 @@ const { posts, concepts, resources } = await getDocsNavItems();
           <>
             <h3 class="text-md font-semibold tracking-wide p-2">Guides</h3>
             <nav class="space-y-1 text-sm mb-10">
+              <a
+                href="/docs"
+                class="flex items-center px-2 py-1 text-gray-900 rounded-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                Getting Started
+              </a>
               {posts.map((article) => {
                 return (
                   <a

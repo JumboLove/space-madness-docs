@@ -9,9 +9,10 @@ export interface Props {
   language: string;
   filename?: string;
   highlightLines?: number[];
+  className?: string;
 }
 
-const { code, language, filename, highlightLines } = Astro.props;
+const { code, language, filename, highlightLines, className } = Astro.props;
 
 // Other styles are set in global.css
 const THEME = "github-dark";
@@ -56,7 +57,7 @@ const htmlString = shiki.renderToHtml(tokens, {
 });
 ---
 
-<section class="not-prose my-8">
+<div class={cn(className, "not-prose")}>
   {
     filename && (
       <header class="flex items-center mb-2 text-muted">
@@ -66,4 +67,4 @@ const htmlString = shiki.renderToHtml(tokens, {
     )
   }
   <Fragment set:html={htmlString} />
-</section>
+</div>
