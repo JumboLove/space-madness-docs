@@ -1,6 +1,6 @@
-# Space Madness - A deeply connected content framework
+# Space Madness Docs - 
 
-This is still early days for Space Madness
+Docs site for Space Madness
 
 Adding some todos here
 
