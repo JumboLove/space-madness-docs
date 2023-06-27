@@ -49,17 +49,17 @@ function copyToClipboard(btn: ClipboardButton) {
       }, 2000);
     },
     (err) => {
-      console.log("failed to copy", err.mesage);
+      console.log("Failed to copy text to clipboard", err.mesage);
     }
   );
 }
 
-// TODO
 function setButtonCopied(btn: ClipboardButton) {
-  console.log("set copied");
+  const iconWrapper = btn.querySelector("[data-clipboard-icons]");
+  iconWrapper?.classList.add("-translate-x-1/2");
 }
 
-// TODO
 function resetButton(btn: ClipboardButton) {
-  console.log("reset btn");
+  const iconWrapper = btn.querySelector("[data-clipboard-icons]");
+  iconWrapper?.classList.remove("-translate-x-1/2");
 }
