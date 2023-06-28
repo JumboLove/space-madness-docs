@@ -25,7 +25,7 @@ const highlighter = await getHighlighter({
 });
 
 // GROQ Language support
-const groqLanguage = {
+const groqLanguage: shiki.ILanguageRegistration = {
   id: "groq",
   scopeName: "source.groq",
   grammar: groqGrammar,
@@ -34,12 +34,23 @@ const groqLanguage = {
 
 await highlighter.loadLanguage(groqLanguage);
 
+// fallback to "plaintext" if a language isn't supported
+const languages = highlighter.getLoadedLanguages();
+const selecteLanguage = languages.includes(language as shiki.Lang)
+  ? language
+  : (() => {
+      console.log(
+        `shiki does not support ${language}, using "plaintext" instead`
+      );
+      return "plaintext";
+    })();
+
 // highlight lines
 const lineOptions = highlightLines?.map((line) => {
   return { line: line, classes: highlightClasses };
 });
 
-const tokens = highlighter.codeToThemedTokens(code, language);
+const tokens = highlighter.codeToThemedTokens(code, selecteLanguage);
 const htmlString = shiki.renderToHtml(tokens, {
   fg: highlighter.getForegroundColor(THEME),
   bg: highlighter.getBackgroundColor(THEME),
