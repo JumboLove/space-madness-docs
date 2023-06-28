@@ -58,15 +58,15 @@ const htmlString = shiki.renderToHtml(tokens, {
 });
 ---
 
+{
+  filename && (
+    <header class="mb-2 flex items-center text-muted">
+      <TerminalIcon className="h-4 w-4" />
+      <span class="pl-2">{filename}</span>
+    </header>
+  )
+}
 <div class={cn(className, "not-prose relative")} data-code-block>
   <ClipboardCopyBtn />
-  {
-    filename && (
-      <header class="flex items-center mb-2 text-muted">
-        <TerminalIcon className="h-4 w-4" />
-        <span class="pl-2">{filename}</span>
-      </header>
-    )
-  }
   <Fragment set:html={htmlString} />
 </div>

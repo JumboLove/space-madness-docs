@@ -224,6 +224,13 @@
   }
 }
 
+/* Base elements */
+@layer base {
+  mark {
+    @apply bg-pink-400;
+  }
+}
+
 /* Popover Links */
 @layer components {
   .popover-link {
