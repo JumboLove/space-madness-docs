@@ -2,6 +2,8 @@
 
 ## A content framework that connects ideas so you can build your digital garden
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/66fb1c54-423b-46a8-9beb-6b71efe07924/deploy-status)](https://app.netlify.com/sites/space-madness/deploys)
+
 Docs site for [Space Madness](https://spacemadness.dev/). A modified version of the base [Space Madness stack](https://github.com/JumboLove/space-madness).
 
 The monorepo is configured with apps as the primary hosted sites.
@@ -23,6 +25,12 @@ Navigate to each folder's `README.md` for more details.
 ## Getting Started
 
 See the [Space Madness Docs](https://spacemadness.dev/docs/) for detailed instructions on installing and runnig your app.
+
+If you'd like to use this repo as your starting point:
+
+```bash
+npx create-turbo@latest -e https://github.com/JumboLove/space-madness-docs
+```
 
 1. `export SANITY_STUDIO_PROJECT_ID=<sanity-id>`
 
