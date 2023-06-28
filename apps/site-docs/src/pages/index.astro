@@ -10,6 +10,7 @@ import { getConcept } from "@/queries/concept";
 import { Search, Flame, Link, Component, type LucideIcon } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import MetaTags from "@/components/MetaTags.astro";
 
 import spaceMadnessAstronaut from "@/assets/space-madness-astronaut.jpg";
 
@@ -71,6 +72,8 @@ const techFeatures: { title: string; description: string }[] = [
 ---
 
 <Layout>
+  <MetaTags slot="metadata" />
+
   <main>
     <header class="relative flex items-center">
       <Image
