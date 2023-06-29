@@ -81,6 +81,7 @@ const techFeatures: { title: string; description: string }[] = [
         alt="Astronaut sitting in lotus position"
         width={1600}
         quality="high"
+        loading="eager"
       />
       <div
         class="hero-overlay absolute inset-0 flex flex-col items-center justify-end"
@@ -116,12 +117,20 @@ const techFeatures: { title: string; description: string }[] = [
     <section
       class="flex flex-col items-center justify-center gap-10 px-4 py-12 sm:flex-row"
     >
-      <img src="images/sanity.svg" alt="Sanity.io logo" class="h-10" />
+      <img
+        src="images/sanity.svg"
+        alt="Sanity.io logo"
+        class="h-10"
+        height="40"
+        width="191"
+      />
       <div class="text-5xl">+</div>
       <img
         src="images/astro-logo-light.svg"
         alt="Astro.build logo"
         class="h-12"
+        height="48"
+        width="183"
       />
     </section>
 
@@ -131,8 +140,9 @@ const techFeatures: { title: string; description: string }[] = [
         language="shell"
         className="max-w-full"
       />
-      <p>
-        Fly over to the <a href="/docs" class="link">docs</a> to get started
+      <p class="text-balance text-center">
+        Fly over to the <a href="/docs" class="link">docs</a> to get started, or
+        checkout the <a href="https://demo.spacemadness.dev/">demo</a>
       </p>
     </section>
 
@@ -170,28 +180,27 @@ const techFeatures: { title: string; description: string }[] = [
                       </div>
                       <span class="tracking-wide">{feature.title}</span>
                     </dt>
-                    <dd
-                      class="mt-2 text-base leading-7 text-gray-400"
-                      set:html={feature.description}
-                    />
-                    {/* Search feature */}
-                    {i == 2 && (
-                      <div class="my-4 max-w-sm" data-pagefind-ignore>
-                        <button
-                          class="border-focusable relative inline-flex w-full items-center px-2 py-3 font-medium"
-                          id="site-search-home"
-                        >
-                          <span class="sr-only">Open Site Search</span>
-                          <Search className="h-4 w-4" />
-                          <span class="overflow-hidden text-ellipsis whitespace-nowrap pl-2">
-                            Try searching "Portable Text"
-                          </span>
-                          <kbd class="pointer-events-none absolute right-2 hidden h-5 select-none items-center gap-1 rounded border bg-slate-700 px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-                            /
-                          </kbd>
-                        </button>
-                      </div>
-                    )}
+                    <dd class="mt-2 text-base leading-7 text-gray-400">
+                      <div set:html={feature.description} />
+                      {/* Search feature */}
+                      {i == 2 && (
+                        <div class="my-4 max-w-sm" data-pagefind-ignore>
+                          <button
+                            class="border-focusable relative inline-flex w-full items-center px-2 py-3 font-medium"
+                            id="site-search-home"
+                          >
+                            <span class="sr-only">Open Site Search</span>
+                            <Search className="h-4 w-4" />
+                            <span class="overflow-hidden text-ellipsis whitespace-nowrap pl-2">
+                              Try searching "Portable Text"
+                            </span>
+                            <kbd class="pointer-events-none absolute right-2 hidden h-5 select-none items-center gap-1 rounded border bg-slate-700 px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+                              /
+                            </kbd>
+                          </button>
+                        </div>
+                      )}
+                    </dd>
                   </div>
                 );
               })
