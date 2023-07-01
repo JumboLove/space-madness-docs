@@ -14,6 +14,7 @@ const { posts, concepts, resources } = await getDocsNavItems();
     id="default-sidebar"
     class="fixed bottom-0 left-0 top-0 z-40 w-64 -translate-x-full transition-transform sm:translate-x-0"
     aria-label="Sidebar"
+    data-pagefind-ignore
   >
     <div class="h-full overflow-y-auto bg-gray-50 px-3 py-4 dark:bg-gray-800">
       <a href="/" class="site-title mb-4 block"
@@ -108,7 +109,7 @@ const { posts, concepts, resources } = await getDocsNavItems();
     <slot />
   </div>
 
-  <div class="fixed bottom-0 right-0 z-50 pb-8 pr-8">
+  <div class="fixed bottom-0 right-0 z-50 pb-8 pr-8" data-pagefind-ignore>
     <button
       class="menu-btn rounded-full p-3 text-slate-200 sm:hidden"
       data-drawer-target="default-sidebar"
