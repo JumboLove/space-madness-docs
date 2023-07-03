@@ -15,10 +15,10 @@ import MetaTags from "@/components/MetaTags.astro";
 import spaceMadnessAstronaut from "@/assets/space-madness-astronaut.jpg";
 
 const digitalGardenConcept = await getConcept("digital-garden");
-const digitalGardenUrl = new URL(
-  getUrlForSanityType("concept", digitalGardenConcept.slug.current),
-  Astro.url
-).toString();
+const digitalGardenUrl = getUrlForSanityType(
+  "concept",
+  digitalGardenConcept.slug.current
+);
 
 const featuresList: { title: string; description: string; icon: LucideIcon }[] =
   [
@@ -106,7 +106,8 @@ const techFeatures: { title: string; description: string }[] = [
             <div class="flex flex-col justify-between gap-2 leading-snug">
               <p class="text-md">{digitalGardenConcept.description}</p><a
                 href={digitalGardenUrl}
-                class="pt-popover-content-link inline-block">Digital Garden</a
+                class="pt-popover-content-link link inline-block"
+                >Digital Garden</a
               >
             </div>
           </PopoverContent>
