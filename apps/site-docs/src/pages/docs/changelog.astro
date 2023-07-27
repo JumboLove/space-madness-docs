@@ -46,6 +46,7 @@ async function fetchData() {
       </p>
       <p>
         Full changelogs for each app and package in the monorepo can be found on
+
         <a
           href="https://github.com/search?q=repo%3AJumboLove%2Fspace-madness+CHANGELOG.md&type=code"
           >Github.</a
@@ -74,5 +75,11 @@ async function fetchData() {
   .changelog :global(li) {
     margin: 0;
     padding: 0;
+  }
+
+  .changelog :global(pre) {
+    background-color: #24292e;
+    border-radius: var(--radius);
+    overflow-x: auto;
   }
 </style>
