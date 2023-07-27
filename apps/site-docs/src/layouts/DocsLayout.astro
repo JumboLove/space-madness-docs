@@ -85,12 +85,19 @@ const { posts, concepts, resources } = await getDocsNavItems();
           <>
             <h3 class="text-md p-2 font-semibold tracking-wide">Resources</h3>
             <nav class="space-y-1 text-sm">
+              <a
+                href="/docs/changelog"
+                class="flex items-center rounded-md px-2 py-1 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              >
+                Changelog
+              </a>
+
               {resources.map((resource) => {
                 return (
                   <a
                     href={getUrlForSanityType(
                       "resource",
-                      resource.slug.current
+                      resource.slug.current,
                     )}
                     class="flex items-center rounded-md px-2 py-1 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >

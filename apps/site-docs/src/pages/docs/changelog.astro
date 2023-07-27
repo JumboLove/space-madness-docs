@@ -1,0 +1,85 @@
+---
+import MetaTags from "@/components/MetaTags.astro";
+import DocsLayout from "@/layouts/DocsLayout.astro";
+import { titleTemplate } from "@/lib/metadata";
+import { marked } from "marked";
+
+const markdown = await fetchData();
+const htmlOutput = marked.parse(markdown, { mangle: false, headerIds: false });
+
+async function fetchData() {
+  const url = new URL(
+    "https://raw.githubusercontent.com/JumboLove/space-madness/main/apps/site-astro/CHANGELOG.md",
+  );
+  const response = await fetch(url);
+  if (response.ok) {
+    const markdown = await response.text();
+    return markdown;
+  } else {
+    throw new Error("Could not fetch Changelog data from Github");
+  }
+}
+---
+
+<DocsLayout>
+  <MetaTags
+    title={titleTemplate("Space Madness Changelog")}
+    description={"See changes over time, great for migrating your project"}
+    slot="metadata"
+  />
+
+  <header class="prose-width content-container">
+    <h1 class="h2">Changelog</h1>
+
+    <div class="prose-custom">
+      <p>
+        Space Madness is a template. It's built to be a solid starting point
+        where you customize to your needs.
+      </p>
+      <p>
+        Because of its design, upgrading is not straghtforward. You can't pull
+        down a new version like a library.
+      </p>
+      <p>
+        The changelog is meant to give you some guidance on the updates being
+        made so you can apply them to your own site if needed.
+      </p>
+      <p>
+        Full changelogs for each app and package in the monorepo can be found on
+
+        <a
+          href="https://github.com/search?q=repo%3AJumboLove%2Fspace-madness+CHANGELOG.md&type=code"
+          >Github.</a
+        >
+      </p>
+    </div>
+  </header>
+
+  <article
+    set:html={htmlOutput}
+    class="prose-custom content-container changelog"
+  />
+</DocsLayout>
+
+<style>
+  .changelog :global(h1) {
+    display: none;
+  }
+
+  .changelog :global(ul) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .changelog :global(li) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .changelog :global(pre) {
+    background-color: #24292e;
+    border-radius: var(--radius);
+    overflow-x: auto;
+  }
+</style>
