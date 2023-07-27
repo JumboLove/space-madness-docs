@@ -17,6 +17,7 @@ Packages are code that is shared across the sites.
 │   └── site-sanity
 └── packages
     ├── content-models
+    ├── sanity-astro-embeds
     └── sanity-zod-types
 ```
 

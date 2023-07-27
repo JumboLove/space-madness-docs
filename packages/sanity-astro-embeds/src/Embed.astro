@@ -1,0 +1,35 @@
+---
+import { parseEmbedUrl } from "./parseEmbedUrl";
+import { ClientEmbed } from "./ClientEmbed";
+
+interface Props {
+  id?: string;
+  url?: string;
+  className?: string;
+}
+
+const { id, url, className, ...embedProps } = Astro.props;
+const providerData = url ? parseEmbedUrl(url) : undefined;
+if (!providerData) {
+  throw new Error(`No matching provider data found: ${id || url}`);
+}
+
+if (!url && !id) {
+  throw new Error("Please provide an ID or Url to embed");
+}
+
+const { provider, id: providerId } = providerData;
+
+const { wrapperClass, ...renderProps } = provider.getRenderProps(
+  url || id || "",
+);
+---
+
+<div class:list={["not-prose", wrapperClass, className]} data-pagefind-ignore>
+  <ClientEmbed
+    providerId={providerId}
+    {...renderProps}
+    {...embedProps}
+    client:visible
+  />
+</div>

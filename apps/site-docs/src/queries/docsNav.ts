@@ -6,7 +6,7 @@ export async function getDocsNavItems() {
   const query = groq`{
     "posts": *[_type == "post" && isVisible == true && language == $lang] | order(importance desc) { title, slug, description },
     "concepts": *[_type == "concept" && isVisible == true] | order(importance desc) {title, slug, description},
-    "resources": *[_type == "resource" && isVisible == true] | order(importance desc) {title, slug, description }
+    "resources": *[_type == "resource" && !defined(parentResource) && isVisible == true] | order(importance desc) {title, slug, description }
   }`;
 
   const LinkResource = z.object({
