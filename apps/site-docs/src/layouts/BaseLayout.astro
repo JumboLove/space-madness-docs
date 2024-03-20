@@ -35,7 +35,11 @@ import MetaTags from "@/components/MetaTags.astro";
     <!-- Umami Analytics -->
     {
       process.env.NODE_ENV === "production" && (
-        <script async src="https://analytics.spacemadness.dev/script.js" data-website-id="f0600944-4cce-4be9-a992-2b39b7976c2d"></script>
+        <script
+          defer
+          src="https://umami-production-d591.up.railway.app/script.js"
+          data-website-id="d06fae1d-65c5-4e90-b21c-a5c420d4e3ea"
+        />
       )
     }
   </body>
